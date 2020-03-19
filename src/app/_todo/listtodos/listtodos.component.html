@@ -1,0 +1,34 @@
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>        
+            <th>Id</th>    
+            <th>Title</th>
+            <th colspan="3">Content</th>           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let todo of todos" >
+            <td>{{ todo.Id }}</td>
+            <td>{{ todo.Title }}</td>
+            <td>{{ todo.Content }}</td>
+            <td><a class="btn btn-success" style="color: #fff;cursor: pointer;" (click)="editTodo($event, edit)">Edit</a></td>
+            <td><a class="btn btn-danger" style="color: #fff;cursor: pointer;" (click)="deleteTodo($event)">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="container" id="edit-container" #edit>
+    <div class="form-group">
+        <input type="text" #txtId value="" hidden />
+        <label class="control-label">Title</label>
+        <input required #txtTitle type="text" name="Title" class="form-control" value="" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">
+            Content
+        </label>
+        <textarea required #txtContent class="form-control" name="Content" value=""></textarea>
+    </div>
+    <button id="btnSave" style="margin-right: 10px;" (click)="update(edit,txtId.value, txtTitle.value,txtContent.value)" class="btn btn-primary">Save Changes</button>    
+    <button (click)="hideEdit(edit)" id="btnCancel" class="btn btn-primary">Cancel</button>
+</div>

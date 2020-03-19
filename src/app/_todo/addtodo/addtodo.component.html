@@ -1,0 +1,12 @@
+<fieldset class="container" style="margin: 50px 0;">
+    <legend>Add New Todo</legend>
+    <div class="form-group">
+        <label class="control-label">Title</label>
+        <input #title required type="text" name="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Content</label>
+        <textarea #content required class="form-control" name="Content"></textarea>
+    </div>
+    <button (click)="addTodo(title.value, content.value)" class="btn btn-primary">Add Todo</button>
+</fieldset>
